@@ -1,0 +1,63 @@
+<!-- Modal one -->
+<div class="modal fade" id="modalOne" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static" aria-hidden="true" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{oneTitle}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" [style.height]="oneHeight">
+        <form id="one_save_form">
+          <div class="form-group form-input">
+            <label>sq:</label>
+            <input class="form-value sq-form-value">
+          </div>
+          <div class="form-group form-input">
+            <label>num:</label>
+            <input class="form-value num-form-value">
+          </div>
+          <div class="form-group form-input">
+            <label>name:</label>
+            <input class="form-value">
+          </div>
+          <div class="form-group form-input">
+            <label>key:</label>
+            <input class="form-value">
+          </div>
+          <div class="form-group form-input">
+            <label >value:</label>
+            <input type="password" class="form-value">
+          </div>
+          <div class="form-group form-select">
+            <div class="select-label">
+              <label>type:</label>
+            </div>
+            <div class="select-div">
+              <select class="form-control">
+                <option>Type 1</option>
+                <option>Type 2</option>
+                <option>Type 3</option>
+                <option>Type 4</option>
+                <option>Type 5</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group form-input">
+            <label>page:</label>
+            <input class="form-value">
+          </div>
+          <div class="form-group form-input">
+            <label>base:</label>
+            <input class="form-value">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="resetForm()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

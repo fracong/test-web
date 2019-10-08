@@ -1,0 +1,45 @@
+.modal .modal-title{
+  float: left;
+}
+
+.modal-body{
+  overflow-y: scroll;
+}
+
+.form-input{
+  width: 100%;
+  height: auto;
+  label{
+    width: 20%;
+    height: 26px;
+    text-align: right;
+    margin-right: 2%;
+    margin-bottom: 0;
+  }
+  .form-value{
+    width: 60%;
+    text-align: left;
+    margin-right: 18%;
+  }
+}
+
+.form-select{
+  height: 29px;
+  .select-label{
+    width: 20%;
+    float: left;
+    margin-right: 2%;
+    label{
+      float: right;
+    }
+  }
+  .select-div{
+    float: left;
+    width: 60%;
+    margin-right: 18%;
+    select{
+      width: auto;
+    }
+  }
+}
+

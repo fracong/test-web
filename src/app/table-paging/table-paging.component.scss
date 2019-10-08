@@ -1,0 +1,26 @@
+.table-paging{
+  a{
+    text-decoration:none;
+    padding: 0px 10px;
+  }
+  .div-left{
+    width: 50%;
+    float: left;
+    div{
+      float: left;
+    }
+  }
+  .div-right{
+    width: 50%;
+    float: left;
+    div{
+      float: right;
+    }
+  }
+}
+
+.table-paging a:hover{
+  font-weight: 600;
+}
+
+

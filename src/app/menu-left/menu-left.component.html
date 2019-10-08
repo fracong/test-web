@@ -1,0 +1,25 @@
+<div class="menu-left">
+  <div class="top" [style.height]="topHeightStr" style="text-align: right">
+    <button type="button" class="btn btn-primary" (click)="backIndex()">Back</button>
+  </div>
+  <div class="left" [style.height]="leftHeight"></div>
+  <div class="right">
+    <app-query-condition></app-query-condition>
+    <table class="table menu-left-table">
+      <thead>
+      <tr>
+        <th *ngFor="let item of thList"><span>{{item}}</span></th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let items of tdArray">
+          <td *ngFor="let i of tdNum">
+            {{items[i]}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <app-table-paging [pageNum]="1" [pageTotal]="10"></app-table-paging>
+  </div>
+</div>
+
