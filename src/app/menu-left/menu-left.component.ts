@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { TestWeb } from './entity/TestWeb';
 import { Http } from '@angular/http';
 
 declare let $: any;
@@ -45,8 +44,7 @@ export class MenuLeftComponent implements OnInit {
     const url = 'http://localhost:8892/testuser/queryTestWeb/list';
     this.http.get(url).subscribe(
       dataJson => {
-        const body = dataJson['_body'];
-        const bodyJson = JSON.parse(body);
+        const bodyJson = this.dataHanlde(dataJson);
         const list = bodyJson.list;
         this.testWebListJson = list;
       },
@@ -54,5 +52,10 @@ export class MenuLeftComponent implements OnInit {
 
       }
     );
+  }
+
+  private dataHanlde(data: any) {
+    const body = data['_body'];
+    return JSON.parse(body);
   }
 }

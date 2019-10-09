@@ -20,43 +20,43 @@
           </div>
           <div class="form-group form-input">
             <label>name:</label>
-            <input class="form-value">
+            <input class="form-value name-form-value">
           </div>
           <div class="form-group form-input">
             <label>key:</label>
-            <input class="form-value">
+            <input class="form-value key-form-value">
           </div>
           <div class="form-group form-input">
             <label >value:</label>
-            <input type="password" class="form-value">
+            <input type="password" class="form-value value-form-value">
           </div>
           <div class="form-group form-select">
             <div class="select-label">
               <label>type:</label>
             </div>
             <div class="select-div">
-              <select class="form-control">
-                <option>Type 1</option>
-                <option>Type 2</option>
-                <option>Type 3</option>
-                <option>Type 4</option>
-                <option>Type 5</option>
+              <select class="form-control type-form-value">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
               </select>
             </div>
           </div>
           <div class="form-group form-input">
             <label>page:</label>
-            <input class="form-value">
+            <input class="form-value page-form-value">
           </div>
           <div class="form-group form-input">
             <label>base:</label>
-            <input class="form-value">
+            <input class="form-value base-form-value">
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="resetForm()">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="resetForm();">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveForm();resetForm();">Save changes</button>
       </div>
     </div>
   </div>
