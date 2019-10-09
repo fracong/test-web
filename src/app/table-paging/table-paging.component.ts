@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -12,11 +12,20 @@ export class TablePagingComponent implements OnInit {
   @Input('pageNum') pageNum: string;
   // tslint:disable-next-line:no-input-rename
   @Input('pageTotal') pageTotal: string;
+  @Output() private prePage = new EventEmitter<string>();
+  @Output() private nextPage = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit() {
-    $('.table-paging .div-left .paging-num').html(this.pageNum);
-    $('.table-paging .div-left .paging-total').html(this.pageTotal);
+    /*$('.table-paging .div-left .paging-num').html(this.pageNum);
+    $('.table-paging .div-left .paging-total').html(this.pageTotal);*/
   }
 
+  queryPreList() {
+    this.prePage.emit();
+  }
+
+  queryNextList() {
+    this.nextPage.emit();
+  }
 }

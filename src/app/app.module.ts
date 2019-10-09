@@ -10,7 +10,6 @@ import { MenuRightComponent } from './menu-right/menu-right.component';
 import { LoginIndexComponent } from './login-index/login-index.component';
 import { ModeOneComponent } from './modal/mode-one/mode-one.component';
 import { TablePagingComponent } from './table-paging/table-paging.component';
-import { QueryConditionComponent } from './menu-left/query-condition/query-condition.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,7 @@ import { QueryConditionComponent } from './menu-left/query-condition/query-condi
     MenuRightComponent,
     LoginIndexComponent,
     ModeOneComponent,
-    TablePagingComponent,
-    QueryConditionComponent
+    TablePagingComponent
   ],
   imports: [
     BrowserModule,

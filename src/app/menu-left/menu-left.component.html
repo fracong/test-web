@@ -4,7 +4,29 @@
   </div>
   <div class="left" [style.height]="leftHeight"></div>
   <div class="right">
-    <app-query-condition></app-query-condition>
+    <div class="query-condition">
+      <div class="form-group">
+        <label>sq:&nbsp;&nbsp;&nbsp;</label>
+        <input type="text">
+      </div>
+      <div class="form-group">
+        <label>num:&nbsp;&nbsp;&nbsp;</label>
+        <input type="text">
+      </div>
+      <div class="form-group">
+        <label>type:&nbsp;&nbsp;&nbsp;</label>
+        <input type="text">
+      </div>
+      <div class="form-group">
+        <label>name:&nbsp;&nbsp;&nbsp;</label>
+        <input type="text">
+      </div>
+      <div class="form-group">
+        <button class="btn-ra">
+          <span class="glyphicon glyphicon-search"></span>
+        </button>
+      </div>
+    </div>
     <table class="table menu-left-table">
       <thead>
         <tr>
@@ -29,7 +51,7 @@
         </tr>
       </tbody>
     </table>
-    <app-table-paging [pageNum]="1" [pageTotal]="10"></app-table-paging>
+    <app-table-paging [pageNum]="pageNum" [pageTotal]="pageTotal" (prePage)="queryTestWebListPre($event)" (nextPage)="queryTestWebListNext($event)"></app-table-paging>
   </div>
 </div>
 

@@ -16,6 +16,9 @@ export class MenuLeftComponent implements OnInit {
   thList: Array<string> = ['Sq', 'Num', 'Type', 'Name', 'Value', 'Key', 'Page', 'Base', 'Btns'];
   tdNum: Array<number> = [];
   testWebListJson = '';
+  pageNum = 1;
+  pageTotal = 0;
+  rowNum = 10;
   constructor(
     private router: Router,
     private http: Http
@@ -41,12 +44,12 @@ export class MenuLeftComponent implements OnInit {
   }
 
   queryTestWebList() {
-    const url = 'http://localhost:8892/testuser/queryTestWeb/list';
+    const url = 'http://localhost:8892/testuser/queryTestWeb/list/' + this.rowNum + '/' + this.pageNum;
     this.http.get(url).subscribe(
       dataJson => {
         const bodyJson = this.dataHanlde(dataJson);
-        const list = bodyJson.list;
-        this.testWebListJson = list;
+        this.testWebListJson = bodyJson.list;
+        this.pageTotal = Math.ceil(+bodyJson.total / + this.rowNum);
       },
       error => {
 
@@ -57,5 +60,19 @@ export class MenuLeftComponent implements OnInit {
   private dataHanlde(data: any) {
     const body = data['_body'];
     return JSON.parse(body);
+  }
+
+  queryTestWebListPre() {
+    if (this.pageNum > 1) {
+      this.pageNum = this.pageNum - 1;
+      this.queryTestWebList();
+    }
+  }
+
+  queryTestWebListNext() {
+    if (this.pageNum < this.pageTotal) {
+      this.pageNum = this.pageNum + 1;
+      this.queryTestWebList();
+    }
   }
 }
