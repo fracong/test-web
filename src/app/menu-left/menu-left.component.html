@@ -7,15 +7,22 @@
     <app-query-condition></app-query-condition>
     <table class="table menu-left-table">
       <thead>
-      <tr>
-        <th *ngFor="let item of thList"><span>{{item}}</span></th>
-      </tr>
+        <tr>
+          <th *ngFor="let item of thList"><span>{{item}}</span></th>
+        </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let items of tdArray">
-          <td *ngFor="let i of tdNum">
-            {{items[i]}}
-            <button *ngIf = "i===(tdNum.length-1)">
+        <tr *ngFor="let web of testWebListJson">
+          <td>{{web['sq']}}</td>
+          <td>{{web['num']}}</td>
+          <td>{{web['webType']}}</td>
+          <td>{{web['webName']}}</td>
+          <td>{{web['value']}}</td>
+          <td>{{web['webKey']}}</td>
+          <td>{{web['page']}}</td>
+          <td>{{web['base']}}</td>
+          <td>
+            <button>
               <span class="glyphicon glyphicon-search"></span>  Query
             </button>
           </td>
