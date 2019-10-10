@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { Http } from '@angular/http';
+import {AppService} from '../app.service';
 
 declare let $: any;
 @Component({
@@ -21,12 +21,12 @@ export class MenuLeftComponent implements OnInit {
   rowNum = 10;
   constructor(
     private router: Router,
-    private http: Http
+    private service: AppService
   ) { }
 
   ngOnInit() {
     this.initConstructor();
-    this.queryTestWebList();
+    this.queryTestWebList(false);
   }
 
   initConstructor() {
@@ -43,14 +43,15 @@ export class MenuLeftComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  queryTestWebList() {
+  queryTestWebList(flag: boolean) {
+    if (flag) { this.pageNum = 1; }
     const sqValue = $('.query-condition-sq').val().trim() === '' ? 'FFFFFFFF' : $('.query-condition-sq').val().trim();
     const numValue = $('.query-condition-num').val().trim() === '' ? 'FFFFFFFF' : $('.query-condition-num').val().trim();
     const typeValue = $('.query-condition-type').val().trim() === '' ? 'FFFFFFFF' : $('.query-condition-type').val().trim();
     const nameValue = $('.query-condition-name').val().trim() === '' ? 'FFFFFFFF' : $('.query-condition-name').val().trim();
-    const url = 'http://localhost:8892/testuser/queryTestWeb/list/' + sqValue + '/' +
+    const urlParams = sqValue + '/' +
       numValue + '/' + typeValue + '/' + nameValue + '/' + this.rowNum + '/' + this.pageNum;
-    this.http.get(url).subscribe(
+    this.service.queryTestWebListHttp(urlParams).subscribe(
       dataJson => {
         const bodyJson = this.dataHanlde(dataJson);
         if (bodyJson.list != null) {
@@ -89,14 +90,14 @@ export class MenuLeftComponent implements OnInit {
   queryTestWebListPre() {
     if (this.pageNum > 1) {
       this.pageNum = this.pageNum - 1;
-      this.queryTestWebList();
+      this.queryTestWebList(false);
     }
   }
 
   queryTestWebListNext() {
     if (this.pageNum < this.pageTotal) {
       this.pageNum = this.pageNum + 1;
-      this.queryTestWebList();
+      this.queryTestWebList(false);
     }
   }
 }
