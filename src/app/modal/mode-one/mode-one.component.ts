@@ -54,7 +54,7 @@ export class ModeOneComponent implements OnInit, OnChanges {
     const page = $('.page-form-value').val();
     const base = $('.base-form-value').val();
     const urlParams = sq + '/' + num + '/' + name + '/' + key + '/' + value + '/' + type + '/' + page + '/' + base;
-    this.service.saveFormHttp(urlParams).subscribe(
+    /*this.service.saveFormGetHttp(urlParams).subscribe(
       dataJson => {
         const bodyJson = this.dataHanlde(dataJson);
         const flag = bodyJson.flag;
@@ -62,6 +62,14 @@ export class ModeOneComponent implements OnInit, OnChanges {
         if ('success' === flag) {
           $('#modalOne').modal('hide');
         }
+      },
+      error => {
+
+      }
+    );*/
+    this.service.saveFormPostHttp(sq, num, name, key, value, type, page, base).subscribe(
+      data => {
+        console.log(data);
       },
       error => {
 
