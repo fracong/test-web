@@ -12,4 +12,9 @@ export class AppService {
     const url = this.urlRoot + 'testuser/queryTestWeb/list/' + urlParams;
     return this.http.get(url);
   }
+
+  saveFormHttp(urlParams: string) {
+    const url = this.urlRoot + 'testuser/insertTestWeb/' + urlParams;
+    return this.http.get(url);
+  }
 }

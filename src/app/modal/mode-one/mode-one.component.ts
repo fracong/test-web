@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import { Http } from '@angular/http';
+import {AppService} from '../../app.service';
 declare let $: any;
 
 @Component({
@@ -13,7 +13,7 @@ export class ModeOneComponent implements OnInit, OnChanges {
   oneHeight  = '';
   // tslint:disable-next-line:no-input-rename
   @Input('windowHeightRight') windowHeightRight: number;
-  constructor(private http: Http) { }
+  constructor(private service: AppService) { }
 
   ngOnInit() {
     if (this.windowHeightRight === 0) {
@@ -53,9 +53,8 @@ export class ModeOneComponent implements OnInit, OnChanges {
     const type = $('.type-form-value').val();
     const page = $('.page-form-value').val();
     const base = $('.base-form-value').val();
-    const url = 'http://localhost:8892/testuser/insertTestWeb/' + sq + '/' + num + '/' + name + '/' +
-      key + '/' + value + '/' + type + '/' + page + '/' + base;
-    this.http.get(url).subscribe(
+    const urlParams = sq + '/' + num + '/' + name + '/' + key + '/' + value + '/' + type + '/' + page + '/' + base;
+    this.service.saveFormHttp(urlParams).subscribe(
       dataJson => {
         const bodyJson = this.dataHanlde(dataJson);
         const flag = bodyJson.flag;
