@@ -10,6 +10,7 @@ import { MenuRightComponent } from './menu-right/menu-right.component';
 import { LoginIndexComponent } from './login-index/login-index.component';
 import { ModeOneComponent } from './modal/mode-one/mode-one.component';
 import { TablePagingComponent } from './table-paging/table-paging.component';
+import { ModeTwoComponent } from './modal/mode-two/mode-two.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TablePagingComponent } from './table-paging/table-paging.component';
     MenuRightComponent,
     LoginIndexComponent,
     ModeOneComponent,
-    TablePagingComponent
+    TablePagingComponent,
+    ModeTwoComponent
   ],
   imports: [
     BrowserModule,

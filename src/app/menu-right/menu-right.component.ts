@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
+
+import {ModeTwoComponent} from '../modal/mode-two/mode-two.component';
 declare let $: any;
 
 @Component({
@@ -10,6 +12,9 @@ declare let $: any;
 export class MenuRightComponent implements OnInit {
 
   windowHeightRight: number = $(window).height();
+  // @ts-ignore
+  @ViewChild('modeTwo')
+  modeTwo: ModeTwoComponent
 
   constructor(
     private router: Router
@@ -24,5 +29,9 @@ export class MenuRightComponent implements OnInit {
 
   initWindowsHeight() {
     this.windowHeightRight = $(window).height();
+  }
+
+  ShowP() {
+    this.modeTwo.addMsg2P('hahaha');
   }
 }
