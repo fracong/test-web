@@ -44,17 +44,41 @@ export class MenuLeftComponent implements OnInit {
   }
 
   queryTestWebList() {
-    const url = 'http://localhost:8892/testuser/queryTestWeb/list/' + this.rowNum + '/' + this.pageNum;
+    const sqValue = $('.query-condition-sq').val().trim() === '' ? 'FFFFFFFF' : $('.query-condition-sq').val().trim();
+    const numValue = $('.query-condition-num').val().trim() === '' ? 'FFFFFFFF' : $('.query-condition-num').val().trim();
+    const typeValue = $('.query-condition-type').val().trim() === '' ? 'FFFFFFFF' : $('.query-condition-type').val().trim();
+    const nameValue = $('.query-condition-name').val().trim() === '' ? 'FFFFFFFF' : $('.query-condition-name').val().trim();
+    const url = 'http://localhost:8892/testuser/queryTestWeb/list/' + sqValue + '/' +
+      numValue + '/' + typeValue + '/' + nameValue + '/' + this.rowNum + '/' + this.pageNum;
     this.http.get(url).subscribe(
       dataJson => {
         const bodyJson = this.dataHanlde(dataJson);
-        this.testWebListJson = bodyJson.list;
-        this.pageTotal = Math.ceil(+bodyJson.total / + this.rowNum);
+        if (bodyJson.list != null) {
+          if (this.isEmptyObject(bodyJson.list)) {
+            this.testWebListJson = bodyJson.list;
+            this.pageTotal = Math.ceil(+bodyJson.total / + this.rowNum);
+          }
+        }
       },
       error => {
 
       }
     );
+  }
+
+  clearQueryCondition() {
+    $('.query-condition-sq').val('');
+    $('.query-condition-num').val('');
+    $('.query-condition-type').val('');
+    $('.query-condition-name').val('');
+  }
+
+  isEmptyObject(obj: any) {
+    // tslint:disable-next-line:forin
+    for (const name in obj) {
+      return true;
+    }
+    return false;
   }
 
   private dataHanlde(data: any) {
