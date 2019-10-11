@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http , Response, URLSearchParams, RequestOptions, Headers} from '@angular/http';
-import { Observable} from 'rxjs';
+import {Observable, of, throwError} from 'rxjs';
+import {catchError, map, timeout} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -32,25 +33,31 @@ export class AppService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     const options = new RequestOptions({ headers});
-    /*const params = new URLSearchParams();
-    params.set('sq', sq);
-    params.set('webNum', num);
-    params.set('webName', name);
-    params.set('key', key);
-    params.set('value', value);
-    params.set('webType', type);
-    params.set('page', page);
-    params.set('base', base);*/
     const params = JSON.parse('{"sq":' + sq + ',"num":' + num + ',' +
       '"webName":' + name + ',"webKey":' + key + ',' +
       '"value":' + value + ',"webType":' + type + ',' +
       '"page":' + page + ',"base":' + base + '}');
-    return this.http.post(url, params, options);
+    return this.http.post(url, params, options).pipe(
+      map(this.handleData),
+      timeout(15000),
+      catchError((error) => this.hanldeSomeError(error))
+    );
   }
 
-  private extractData(res: Response) {
+  private handleData(res: Response) {
     if (res['_body'] === '' || res['_body'] == null) { return null; }
     const body = res.json();
     return body || {};
+  }
+
+  private hanldeSomeError(error: any) {
+    console.log(error);
+    if (error.error instanceof ErrorEvent) {
+      console.log(' error occurred:', error.error.message);
+    } else {
+      console.log(`${error.status}-${error.statusText}`);
+    }
+    // return throwError(new Error('Server Error!'));
+    return Observable.throw('Error!');
   }
 }
