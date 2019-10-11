@@ -39,10 +39,6 @@ export class MenuLeftComponent implements OnInit {
     }
   }
 
-  backIndex() {
-    this.router.navigate(['/']);
-  }
-
   queryTestWebList(flag: boolean) {
     if (flag) { this.pageNum = 1; }
     const sqValue = $('.query-condition-sq').val().trim() === '' ? 'FFFFFFFF' : $('.query-condition-sq').val().trim();
@@ -54,7 +50,7 @@ export class MenuLeftComponent implements OnInit {
     this.service.queryTestWebListHttp(urlParams).subscribe(
       dataJson => {
         const list = dataJson.list;
-        if (list != null && this.isEmptyObject(list)) {
+        if (list != null && this.service.isEmptyObject(list)) {
           this.testWebListJson = list;
           this.pageTotal = Math.ceil(+dataJson.total / + this.rowNum);
         }
@@ -70,19 +66,6 @@ export class MenuLeftComponent implements OnInit {
     $('.query-condition-num').val('');
     $('.query-condition-type').val('');
     $('.query-condition-name').val('');
-  }
-
-  isEmptyObject(obj: any) {
-    // tslint:disable-next-line:forin
-    for (const name in obj) {
-      return true;
-    }
-    return false;
-  }
-
-  private dataHanlde(data: any) {
-    const body = data['_body'];
-    return JSON.parse(body);
   }
 
   queryTestWebListPre() {

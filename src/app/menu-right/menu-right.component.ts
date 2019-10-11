@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {ModeTwoComponent} from '../modal/mode-two/mode-two.component';
+import {AppService} from '../app.service';
 declare let $: any;
 
 @Component({
@@ -17,14 +18,11 @@ export class MenuRightComponent implements OnInit {
   modeTwo: ModeTwoComponent
 
   constructor(
-    private router: Router
+    private router: Router,
+    private service: AppService
   ) { }
 
   ngOnInit() {
-  }
-
-  backIndex() {
-    this.router.navigate(['/']);
   }
 
   initWindowsHeight() {

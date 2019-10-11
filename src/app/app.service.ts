@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { Http , Response, URLSearchParams, RequestOptions, Headers} from '@angular/http';
 import {Observable, of, throwError} from 'rxjs';
 import {catchError, map, timeout} from 'rxjs/operators';
+import {Router} from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
   urlRoot = 'http://localhost:8892/';
 
-  constructor(private http: Http) { }
+  constructor(private router: Router,
+              private http: Http) { }
 
   queryTestWebListHttp(urlParams: string) {
     const url = this.urlRoot + 'testuser/queryTestWeb/list/' + urlParams;
@@ -55,7 +57,6 @@ export class AppService {
   }
 
   private hanldeSomeError(error: any) {
-    console.log(error);
     if (error.error instanceof ErrorEvent) {
       console.log(' error occurred:', error.error.message);
     } else {
@@ -63,5 +64,18 @@ export class AppService {
     }
     // return throwError(new Error('Server Error!'));
     return Observable.throw('Error!');
+  }
+
+  /**
+   * [Determine empty]
+   * @param obj [any]
+   */
+  public isEmptyObject(obj: any) {
+    for (const name of obj) { return true; }
+    return false;
+  }
+
+  public backIndex() {
+    this.router.navigate(['/']);
   }
 }

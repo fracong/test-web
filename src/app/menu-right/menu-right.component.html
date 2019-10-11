@@ -3,7 +3,7 @@
     Add Info
   </button>
   <app-mode-one [windowHeightRight]="windowHeightRight"></app-mode-one>
-  <button type="button" class="btn btn-primary" (click)="backIndex()">Back</button>
+  <button type="button" class="btn btn-primary" (click)="this.service.backIndex()">Back</button>
   <button type="button" class="btn btn-primary" (click)="ShowP()">Show-P1</button>
   <button type="button" class="btn btn-primary" (click)="modeTwo.addMsg2P('qwerty')">Show-P2</button>
   <app-mode-two #modeTwo></app-mode-two>
