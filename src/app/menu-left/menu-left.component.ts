@@ -53,12 +53,10 @@ export class MenuLeftComponent implements OnInit {
       numValue + '/' + typeValue + '/' + nameValue + '/' + this.rowNum + '/' + this.pageNum;
     this.service.queryTestWebListHttp(urlParams).subscribe(
       dataJson => {
-        const bodyJson = this.dataHanlde(dataJson);
-        if (bodyJson.list != null) {
-          if (this.isEmptyObject(bodyJson.list)) {
-            this.testWebListJson = bodyJson.list;
-            this.pageTotal = Math.ceil(+bodyJson.total / + this.rowNum);
-          }
+        const list = dataJson.list;
+        if (list != null && this.isEmptyObject(list)) {
+          this.testWebListJson = list;
+          this.pageTotal = Math.ceil(+dataJson.total / + this.rowNum);
         }
       },
       error => {

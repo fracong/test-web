@@ -12,7 +12,11 @@ export class AppService {
 
   queryTestWebListHttp(urlParams: string) {
     const url = this.urlRoot + 'testuser/queryTestWeb/list/' + urlParams;
-    return this.http.get(url);
+    return this.http.get(url).pipe(
+      map(this.handleData),
+      timeout(15000),
+      catchError((error) => this.hanldeSomeError(error))
+    );
   }
 
   saveFormGetHttp(urlParams: string) {
