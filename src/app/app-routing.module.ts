@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginIndexComponent } from './login-index/login-index.component';
 import {MenuLeftComponent} from './menu-left/menu-left.component';
 import {MenuRightComponent} from './menu-right/menu-right.component';
+import {AppChildModule} from './app-child/app-child.module';
 
 const routes: Routes = [
   {
@@ -25,7 +26,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    AppChildModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
