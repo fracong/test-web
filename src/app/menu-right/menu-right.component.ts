@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {Router} from '@angular/router';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
 import {ModeTwoComponent} from '../modal/mode-two/mode-two.component';
 import {AppService} from '../app.service';
@@ -19,10 +19,14 @@ export class MenuRightComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private service: AppService
+    private service: AppService,
+    private aRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.aRoute.queryParams.subscribe(params => {
+      console.log(params['testActivatedRoute']);
+    });
   }
 
   initWindowsHeight() {

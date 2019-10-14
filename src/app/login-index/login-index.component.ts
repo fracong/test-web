@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router ,NavigationExtras,ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-index',
@@ -7,6 +7,7 @@ import {Router ,NavigationExtras,ActivatedRoute} from '@angular/router';
   styleUrls: ['./login-index.component.scss']
 })
 export class LoginIndexComponent implements OnInit {
+  testActivatedRoute = 'test';
 
   constructor(
     private router: Router
@@ -15,11 +16,11 @@ export class LoginIndexComponent implements OnInit {
   ngOnInit() {
   }
 
-  jumpMenufunction(flag){
-    if(flag == "left"){
+  jumpMenufunction(flag) {
+    if (flag === 'left') {
       this.router.navigate(['/menu-left']);
-    }else if(flag == "right"){
-      this.router.navigate(['/menu-right']);
+    } else if (flag === 'right') {
+      this.router.navigate(['/menu-right'], {queryParams: { testActivatedRoute: this.testActivatedRoute } });
     }
   }
 }
