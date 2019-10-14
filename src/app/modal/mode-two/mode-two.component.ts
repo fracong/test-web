@@ -8,6 +8,8 @@ declare let $: any;
   styleUrls: ['./mode-two.component.scss']
 })
 export class ModeTwoComponent implements OnInit {
+  baseNum = 2;
+  indexNum = '10';
 
   constructor() { }
 
@@ -16,5 +18,9 @@ export class ModeTwoComponent implements OnInit {
 
   addMsg2P(msg: string) {
     $('.show-p').html(msg);
+  }
+
+  showDate(indexNum: string) {
+    this.indexNum = indexNum;
   }
 }

@@ -25,7 +25,7 @@ export class MenuRightComponent implements OnInit {
 
   ngOnInit() {
     this.aRoute.queryParams.subscribe(params => {
-      console.log(params['testActivatedRoute']);
+      console.log(params.testActivatedRoute);
     });
   }
 
