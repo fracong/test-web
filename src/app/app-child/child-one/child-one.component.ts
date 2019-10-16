@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppService} from '../../app.service';
 declare let $: any;
 
 @Component({
@@ -11,12 +12,13 @@ export class ChildOneComponent implements OnInit {
   ifOneFocusCLass = false;
   ifTwoLableSmall = false;
   ifTwoFocusCLass = false;
-  oneValueList = ['aaaaa', 'bbbbb', 'ccccc', 'ddddd', 'eeeee', 'fffff'];
-
-  constructor() { }
+  oneAllValueList = ['aaaaa', 'bbbbb', 'ccccc', 'ddddd', 'eeeee', 'fffff', 'asdqweq', 'aaaaa_1'];
+  oneValueList = [];
+  errorOneClass = false;
+  constructor(private service: AppService) { }
 
   ngOnInit() {
-    this.inputOneValue(this.oneValueList[0]);
+    this.inputOneValue(this.oneAllValueList[0]);
   }
 
   changeOneIfVisible() {
@@ -24,8 +26,12 @@ export class ChildOneComponent implements OnInit {
     if (this.ifVisible) {
       this.ifVisible = false;
     } else {
-      this.ifVisible = true;
+      if (this.oneValueList.length > 0) {
+        this.ifVisible = true;
+      }
     }
+    this.initPanelList(false);
+    this.changeOneBorderColor();
   }
 
   changeOneFocusFalse() {
@@ -33,17 +39,62 @@ export class ChildOneComponent implements OnInit {
     setTimeout(() => {
       this.ifVisible = false;
     }, 200);
+    this.changeOneBorderColor();
   }
 
   changeOneFocusTrue() {
     this.ifOneFocusCLass = true;
     setTimeout(() => {
-      this.ifVisible = true;
+      if (this.oneValueList.length > 0) {
+        this.ifVisible = true;
+      }
     }, 200);
+    this.errorOneClass = false;
   }
 
   inputOneValue(value: string) {
-    $('.fc-group input.item-shop-floor').val(value);
+    $('.item-shop-floor').val(value);
+    this.changeOneBorderColor();
+  }
+
+  initPanelList(flag: boolean) {
+    const shopFloorId = $('.item-shop-floor').val();
+    if (shopFloorId === '') {
+      this.oneValueList = this.oneAllValueList;
+      if (flag) {
+        this.ifVisible = true;
+      }
+    } else {
+      const oneValueListTmp = [];
+      for (const oneValue of this.oneAllValueList) {
+        if (oneValue.indexOf(shopFloorId) !== -1) {
+          oneValueListTmp.push(oneValue);
+        }
+      }
+      if (oneValueListTmp.length > 0) {
+        this.oneValueList = oneValueListTmp;
+        if (flag) {
+          this.ifVisible = true;
+        }
+      } else {
+        this.oneValueList = [];
+        if (flag) {
+          this.ifVisible = false;
+        }
+      }
+    }
+  }
+
+  changeOneBorderColor() {
+    setTimeout(() => {
+      const shopFloorId = $('.item-shop-floor').val();
+      if (!this.ifVisible &&
+        (shopFloorId === '' || !this.service.checkIfContainArray(shopFloorId, this.oneAllValueList))) {
+        this.errorOneClass = true;
+      } else {
+        this.errorOneClass = false;
+      }
+    }, 200);
   }
 
   changeTwoFocusTrue() {

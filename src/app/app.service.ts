@@ -75,6 +75,15 @@ export class AppService {
     return false;
   }
 
+  checkIfContainArray(checkValue: string, array: any): boolean {
+    for (const oneValue of array) {
+      if (oneValue === checkValue) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public backIndex() {
     this.router.navigate(['/']);
   }

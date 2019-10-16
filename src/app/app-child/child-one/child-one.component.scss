@@ -3,11 +3,11 @@
   .fc-form{
     height: 40px;
     display: flex;
-  }
-  .fc-condition{
-    display:flex;
-    width: 20%;
-    margin-right: 20px;
+    .fc-condition{
+      display:flex;
+      width: 20%;
+      margin-right: 20px;
+    }
   }
 }
 
@@ -28,7 +28,7 @@
   position: absolute;
   z-index: 99;
   overflow: auto;
-  max-height: 12.5rem;
+  max-height: 14.5rem;
   border: .125rem solid;
   border-top: none;
   border-radius: 0 0 4px 4px;
@@ -53,6 +53,10 @@
       text-align: left;
       border: 0 none;
       border-bottom: #eee .063rem solid;
+    }
+    .fc-panel-item:hover{
+      color: #000;
+      background-color: rgba(9, 45, 55, .1);
     }
   }
   ul {
@@ -150,15 +154,23 @@
   left: 0;
 }
 
-.fc-group input{
-  color: #333;
-  font-size: 18px;
-  width: 100%;
-  border: .125rem solid #999;
-  border-radius: .25rem;
-  box-shadow: none;
-  padding: 1rem 1.75rem .125rem 50px;
-  height: 40px;
+.fc-group {
+  input {
+    color: #333;
+    font-size: 18px;
+    width: 100%;
+    border: .125rem solid #999;
+    border-radius: .25rem;
+    box-shadow: none;
+    padding: 1rem 1.75rem .125rem 50px;
+    height: 40px;
+  }
+  input.fc-input-panel-visible{
+    border-radius: 0.25rem 0.25rem 0rem 0rem;
+  }
+  input.fc-input-error{
+    border-color: rgb(227, 31, 35);
+  }
 }
 
 .fc-group >i{

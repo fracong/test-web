@@ -6,7 +6,9 @@
       <div class="fc-drop-down">
         <div class="fc-group">
           <label class="fc-label fc-small">Shop Floor ID</label>
-          <input type="text" #in autocomplete="off" class="item-shop-floor" [ngClass]="{'fc-input-focus':ifOneFocusCLass}"
+          <input type="text" #in autocomplete="off" class="item-shop-floor"
+                 [ngClass]="{'fc-input-focus':ifOneFocusCLass,'fc-input-panel-visible':ifVisible,'fc-input-error':errorOneClass}"
+                 (click)="initPanelList(true)" (keyup)="initPanelList(true)"
                  (focus)="changeOneFocusTrue();" (blur)="changeOneFocusFalse()">
           <i class="fa fa-file-text" [ngClass]="{'fc-icon-focus':ifOneFocusCLass}"></i>
           <span>
