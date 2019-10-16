@@ -1,23 +1,23 @@
 <!-- 查找 -->
-<div class="child-query-condition">
-  <form class="query-content">
+<div class="fc-container">
+  <form class="fc-form">
     <!-- Shop Floor Id -->
     <div style="display:flex;width: 20%;margin-right: 20px">
-      <div class="drop-down">
-        <div class="query-group">
-          <label class="query-label">Shop Floor ID</label>
-          <input type="text" #in autocomplete="off" class="item-shop-floor" [ngClass]="{'input-focus':ifOneFocusCLass}"
-                 (focus)="changeFocusTrue();" (blur)="changeFocusFalse()">
-          <i class="fa fa-file-text" [ngClass]="{'icon-focus':ifOneFocusCLass}"></i>
+      <div class="fc-drop-down">
+        <div class="fc-group">
+          <label class="fc-label fc-small">Shop Floor ID</label>
+          <input type="text" #in autocomplete="off" class="item-shop-floor" [ngClass]="{'fc-input-focus':ifOneFocusCLass}"
+                 (focus)="changeOneFocusTrue();" (blur)="changeOneFocusFalse()">
+          <i class="fa fa-file-text" [ngClass]="{'fc-icon-focus':ifOneFocusCLass}"></i>
           <span>
-            <i class="drop-down-icon">
-              <button type="button" class="drop-down-btn" (click)="changeIfVisible()" (blur)="changeFocusFalse()">
+            <i class="fc-drop-down-icon">
+              <button type="button" class="fc-drop-down-btn" (click)="changeOneIfVisible()" (blur)="changeOneFocusFalse()">
                 <i class="fa fa-caret-down fa-lg"></i>
               </button>
             </i>
           </span>
         </div>
-        <div class="panel" style="width: 100%;" *ngIf="ifVisible">
+        <div class="fc-panel" style="width: 100%;" *ngIf="ifVisible">
           <ul class="items">
             <li class="item" *ngFor="let item of oneValueList" (click)="inputOneValue(item)">{{item}}</li>
           </ul>
@@ -26,12 +26,13 @@
     </div>
     <!-- Part Number -->
     <div style="display:flex;width: 20%;margin-right: 20px">
-      <div class="query-group">
-        <label class="query-label">
-          <span style="color:red;padding-right:2px;font-family: Helvetica">*</span>Part Number
+      <div class="fc-group">
+        <label class="fc-label" [ngClass]="{'fc-small':ifTwoLableSmall}">
+          <span style="color:red;padding-right:2px;font-family: Helvetica">*</span>
+          Part Number
         </label>
-        <input type="text" class="item-part-number">
-        <i class="fa fa-file-text"></i>
+        <input type="text" class="item-part-number" [ngClass]="{'fc-input-focus':ifTwoFocusCLass}" (focus)="changeTwoFocusTrue()" (blur)="changeTwoFocusFalse()">
+        <i class="fa fa-file-text" [ngClass]="{'fc-icon-focus':ifTwoFocusCLass}"></i>
       </div>
     </div>
   </form>

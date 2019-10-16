@@ -9,6 +9,8 @@ declare let $: any;
 export class ChildOneComponent implements OnInit {
   ifVisible = false;
   ifOneFocusCLass = false;
+  ifTwoLableSmall = false;
+  ifTwoFocusCLass = false;
   oneValueList = ['aaaaa', 'bbbbb', 'ccccc', 'ddddd', 'eeeee', 'fffff'];
 
   constructor() { }
@@ -17,7 +19,7 @@ export class ChildOneComponent implements OnInit {
     this.inputOneValue(this.oneValueList[0]);
   }
 
-  changeIfVisible() {
+  changeOneIfVisible() {
     this.ifOneFocusCLass = true;
     if (this.ifVisible) {
       this.ifVisible = false;
@@ -26,14 +28,14 @@ export class ChildOneComponent implements OnInit {
     }
   }
 
-  changeFocusFalse() {
+  changeOneFocusFalse() {
     this.ifOneFocusCLass = false;
     setTimeout(() => {
       this.ifVisible = false;
     }, 200);
   }
 
-  changeFocusTrue() {
+  changeOneFocusTrue() {
     this.ifOneFocusCLass = true;
     setTimeout(() => {
       this.ifVisible = true;
@@ -41,6 +43,18 @@ export class ChildOneComponent implements OnInit {
   }
 
   inputOneValue(value: string) {
-    $('.query-group input.item-shop-floor').val(value);
+    $('.fc-group input.item-shop-floor').val(value);
+  }
+
+  changeTwoFocusTrue() {
+    this.ifTwoLableSmall = true;
+    this.ifTwoFocusCLass = true;
+  }
+
+  changeTwoFocusFalse() {
+    this.ifTwoFocusCLass = false;
+    if ($('.item-part-number').val() === '') {
+      this.ifTwoLableSmall = false;
+    }
   }
 }

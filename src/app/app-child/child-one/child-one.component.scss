@@ -1,23 +1,21 @@
-.child-query-condition{
+.fc-container{
   margin: 10px;
-  .query-content{
+  .fc-form{
     height: 40px;
     display: flex;
-    .drop-down {
-      position: relative;
-      display: inline-block;
-      zoom: 1;
-      width: 100%;
-      cursor: pointer;
-      -webkit-box-shadow: none;
-      -moz-box-shadow: none;
-      box-shadow: none;
-    }
   }
 }
 
-.drop-down{
-  .panel{
+.fc-drop-down{
+  position: relative;
+  display: inline-block;
+  zoom: 1;
+  width: 100%;
+  cursor: pointer;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  .fc-panel{
     position: absolute;
     z-index: 99;
     overflow: auto;
@@ -51,35 +49,30 @@
       margin: 0;
     }
   }
-  .panel::-webkit-scrollbar {
-    width: 3px;
+  .fc-panel::-webkit-scrollbar {
     width: .188rem;
-    height: 3px;
     height: .188rem;
     background-color: transparent;
   }
-  .panel::-webkit-scrollbar-track {
-    border-radius: 10px;
+  .fc-panel::-webkit-scrollbar-track {
     border-radius: .625rem;
     background-color: transparent;
   }
-  .panel::-webkit-scrollbar-thumb {
-    border-radius: 10px;
+  .fc-panel::-webkit-scrollbar-thumb {
     border-radius: .625rem;
     background-color: #333;
   }
 }
 
-.query-group {
+.fc-group {
   position: relative;
   width: 100%;
   margin-bottom: 0;
-  .query-label{
+  .fc-label{
     font-family: SourceCodePro-Regular, serif;
-    font-size: .75rem;
-    line-height: 1.07142857;
-    top: -1rem;
-    left: 0;
+    font-size: 16px;
+    line-height: 1.42857143;
+    top: -.6875rem;
     position: absolute;
     transition: all .3s ease;
     pointer-events: none;
@@ -92,6 +85,12 @@
     overflow: hidden;
     font-weight: 400;
     margin: 1rem 0 0 0;
+  }
+  .fc-label.fc-small{
+    font-size: .75rem;
+    line-height: 1.07142857;
+    top: -1rem;
+    left: 0;
   }
   input{
     color: #333;
@@ -121,13 +120,13 @@
     color: #999;
     border-right: .125rem solid #999;
   }
-  .drop-down-icon{
+  .fc-drop-down-icon{
     position: absolute;
     top: 0;
     right: .5rem;
     margin-top: 1rem;
     color: #999;
-    .drop-down-btn{
+    .fc-drop-down-btn{
       position: absolute;
       top: -.375rem;
       right: .5rem;
@@ -143,14 +142,14 @@
   }
 }
 
-.query-group{
-  .icon-focus {
-    color: #333 !important;
-    border-color: #333 !important;
-  }
-  .input-focus {
+.fc-group{
+  .fc-input-focus {
     border-color: #333;
     outline: 0;
     box-shadow: none;
+  }
+  .fc-icon-focus {
+    color: #333 !important;
+    border-color: #333 !important;
   }
 }
