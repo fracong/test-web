@@ -2,7 +2,7 @@
 <div class="fc-container">
   <form class="fc-form">
     <!-- Shop Floor Id -->
-    <div style="display:flex;width: 20%;margin-right: 20px">
+    <div class="fc-condition">
       <div class="fc-drop-down">
         <div class="fc-group">
           <label class="fc-label fc-small">Shop Floor ID</label>
@@ -17,7 +17,7 @@
             </i>
           </span>
         </div>
-        <div class="fc-panel" style="width: 100%;" *ngIf="ifVisible">
+        <div class="fc-panel" *ngIf="ifVisible">
           <ul class="fc-panel-items">
             <li class="fc-panel-item" *ngFor="let item of oneValueList" (click)="inputOneValue(item)">{{item}}</li>
           </ul>
@@ -25,10 +25,10 @@
       </div>
     </div>
     <!-- Part Number -->
-    <div style="display:flex;width: 20%;margin-right: 20px">
+    <div class="fc-condition">
       <div class="fc-group">
         <label class="fc-label" [ngClass]="{'fc-small':ifTwoLableSmall}">
-          <span style="color:red;padding-right:2px;font-family: Helvetica">*</span>
+          <span class="fc-star-red">*</span>
           Part Number
         </label>
         <input type="text" class="item-part-number" [ngClass]="{'fc-input-focus':ifTwoFocusCLass}" (focus)="changeTwoFocusTrue()" (blur)="changeTwoFocusFalse()">
