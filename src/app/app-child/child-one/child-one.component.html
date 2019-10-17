@@ -38,4 +38,9 @@
       </div>
     </div>
   </form>
+  <div>
+    <p [appMyDirective] = "'red'" myFlag = "true">It's my AppMyDirective !</p>
+    <p *appMyDirectiveTwo = "true">It's my AppMyDirectiveTwo true !</p>
+    <p *appMyDirectiveTwo = "false">It's my AppMyDirectiveTwo false !</p>
+  </div>
 </div>
