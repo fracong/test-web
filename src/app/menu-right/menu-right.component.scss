@@ -1,9 +1,21 @@
 .btn-list{
+  clear: both;
   button{
     float: left;
     margin-top: 10px;
     margin-left: 20px;
     padding: 10px 30px;
+  }
+}
+
+.app-two{
+  clear: both;
+  text-align: center;
+  height: 500px;
+  padding-top: 30px;
+  .app-two-item ul li{
+    list-style-type:none;
+    margin-bottom: 10px;
   }
 }
 

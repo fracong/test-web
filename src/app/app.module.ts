@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule, Http } from '@angular/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +14,6 @@ import { ModeOneComponent } from './modal/mode-one/mode-one.component';
 import { TablePagingComponent } from './table-paging/table-paging.component';
 import { ModeTwoComponent } from './modal/mode-two/mode-two.component';
 import { TestPipePipe } from './pipe/test-pipe.pipe';
-import {HttpClientModule, HttpClientJsonpModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {HttpClientModule, HttpClientJsonpModule} from '@angular/common/http';
     JsonpModule,
     HttpModule,
     HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

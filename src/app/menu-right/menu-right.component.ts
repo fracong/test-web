@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import {ModeTwoComponent} from '../modal/mode-two/mode-two.component';
 import {AppService} from '../app.service';
@@ -9,14 +10,29 @@ declare let $: any;
 @Component({
   selector: 'app-menu-right',
   templateUrl: './menu-right.component.html',
-  styleUrls: ['./menu-right.component.scss']
+  styleUrls: ['./menu-right.component.scss'],
+  animations: [
+    trigger('btnChange', [
+      state('one', style({
+        backgroundColor: '#337ab7',
+        transform: 'scale(1)'
+      })),
+      state('two', style({
+        backgroundColor: '#cc2c21',
+        transform: 'scale(1.7)'
+      })),
+      transition('one => two', animate('1000ms ease-in')),
+      transition('two => one', animate('1000ms ease-out'))
+    ])
+  ]
 })
 export class MenuRightComponent implements OnInit {
+  stateType = 'one';
 
   windowHeightRight: number = $(window).height();
   // @ts-ignore
   @ViewChild('modeTwo')
-  modeTwo: ModeTwoComponent
+  modeTwo: ModeTwoComponent;
 
   constructor(
     private router: Router,
@@ -63,5 +79,9 @@ export class MenuRightComponent implements OnInit {
     this.service.httpQueryJsonp().subscribe(data => {
       console.log(data.name);
     });
+  }
+
+  changeState() {
+    this.stateType = this.stateType === 'one' ? 'two' : 'one';
   }
 }

@@ -1,4 +1,4 @@
-<div class="btn-list">
+<div class="btn-list" style="width: 100%">
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOne" (click)="initWindowsHeight()">
     Add Info
   </button>
@@ -10,7 +10,15 @@
   <button type="button" class="btn btn-primary" (click)="clickSaveHttpClientPost()">HttpClientPost</button>
   <button type="button" class="btn btn-primary" (click)="clickHttpClientQueryJsonp()">HttpClientJsonp</button>
   <button type="button" class="btn btn-primary" (click)="clickHttpQueryJsonp()">HttpJsonp</button>
-  <app-mode-two #modeTwo></app-mode-two>
 </div>
+<div class="app-two">
+  <div class="app-two-item">
+    <app-mode-two #modeTwo></app-mode-two>
+  </div>
+  <div class="app-two-item">
+    <button type="button" class="btn btn-primary" [@btnChange] = "stateType" (click)="changeState()">11111</button>
+  </div>
+</div>
+
 
 
