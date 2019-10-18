@@ -4,6 +4,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {ModeTwoComponent} from '../modal/mode-two/mode-two.component';
 import {AppService} from '../app.service';
 import {HttpClientService} from '../http-client.service';
+import {subscribeOn} from 'rxjs/operators';
 declare let $: any;
 
 @Component({
@@ -50,6 +51,12 @@ export class MenuRightComponent implements OnInit {
     this.httpClient.saveFormPostHttp('502', '3', '1', '2', '4', '3', '32', '65').subscribe(dataJson => {
       console.log(typeof dataJson);
       console.log(dataJson.flag);
+    });
+  }
+
+  clickQueryJsonpList() {
+    this.httpClient.queryJsonpList().subscribe(data => {
+      console.log(data.name);
     });
   }
 }

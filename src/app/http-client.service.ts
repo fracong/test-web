@@ -42,6 +42,14 @@ export class HttpClientService {
     );
   }
 
+  queryJsonpList() {
+    const url = this.urlRoot + 'testuser/jsonp/user/1';
+    return this.http.jsonp<any>(url, 'callback').pipe(
+      timeout(15000),
+      catchError((error) => this.handleSomeError(error))
+    );
+  }
+
   private handleSomeError(error: any) {
     if (error.error instanceof ErrorEvent) {
       console.log(' error occurred:', error.error.message);
