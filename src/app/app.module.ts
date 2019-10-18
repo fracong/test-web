@@ -12,6 +12,7 @@ import { ModeOneComponent } from './modal/mode-one/mode-one.component';
 import { TablePagingComponent } from './table-paging/table-paging.component';
 import { ModeTwoComponent } from './modal/mode-two/mode-two.component';
 import { TestPipePipe } from './pipe/test-pipe.pipe';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TestPipePipe } from './pipe/test-pipe.pipe';
     AppRoutingModule,
     FormsModule,
     JsonpModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
