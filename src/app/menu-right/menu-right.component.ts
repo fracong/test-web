@@ -1,10 +1,9 @@
-import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {ModeTwoComponent} from '../modal/mode-two/mode-two.component';
 import {AppService} from '../app.service';
 import {HttpClientService} from '../http-client.service';
-import {subscribeOn} from 'rxjs/operators';
 declare let $: any;
 
 @Component({
@@ -54,8 +53,14 @@ export class MenuRightComponent implements OnInit {
     });
   }
 
-  clickQueryJsonpList() {
+  clickHttpClientQueryJsonp() {
     this.httpClient.queryJsonpList().subscribe(data => {
+      console.log(data.name);
+    });
+  }
+
+  clickHttpQueryJsonp() {
+    this.service.httpQueryJsonp().subscribe(data => {
       console.log(data.name);
     });
   }

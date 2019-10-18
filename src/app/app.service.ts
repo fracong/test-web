@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http , Response, URLSearchParams, RequestOptions, Headers} from '@angular/http';
+import { Http , Response, URLSearchParams, RequestOptions, Headers, Jsonp} from '@angular/http';
 import {Observable, of, throwError} from 'rxjs';
 import {catchError, map, timeout} from 'rxjs/operators';
 import {Router} from '@angular/router';
@@ -8,9 +8,12 @@ import {Router} from '@angular/router';
 })
 export class AppService {
   urlRoot = 'http://localhost:8892/';
+  times = 0;
 
   constructor(private router: Router,
-              private http: Http) { }
+              private http: Http,
+              private jsonp: Jsonp
+              ) { }
 
   queryTestWebListHttp(urlParams: string) {
     const url = this.urlRoot + 'testuser/queryTestWeb/list/' + urlParams;
@@ -64,6 +67,13 @@ export class AppService {
     }
     // return throwError(new Error('Server Error!'));
     return Observable.throw('Error!');
+  }
+
+  httpQueryJsonp() {
+    const url = this.urlRoot + 'testuser/jsonp/user/1' + '?callback=__ng_jsonp__.__req' + this.times++ + '.finished';
+    return this.jsonp.get(url).pipe(
+      map(this.handleData)
+    );
   }
 
   /**
