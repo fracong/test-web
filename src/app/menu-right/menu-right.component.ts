@@ -23,6 +23,10 @@ declare let $: any;
       })),
       transition('one => two', animate('1000ms ease-in')),
       transition('two => one', animate('1000ms ease-out'))
+    ]),
+    trigger('btnChange2', [
+      transition('void => *', [style({transform: 'translateX(-100%)'}), animate(5000)]),
+      transition('* => void', [animate(100, style({transform: 'translateX(100%)'}))])
     ])
   ]
 })
