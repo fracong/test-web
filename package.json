@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --base-href /test-web/ --output-path /home/fracong/worksoft/apache-tomcat-8.5.23/webapps/test-web --delete-output-path=false",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

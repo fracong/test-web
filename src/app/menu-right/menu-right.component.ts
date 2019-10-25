@@ -21,7 +21,7 @@ declare let $: any;
         backgroundColor: '#cc2c21',
         transform: 'scale(1.7)'
       })),
-      transition('one => two', animate('1000ms ease-in')),
+      transition('one => two', animate('1000ms 1000ms ease-in')),
       transition('two => one', animate('1000ms ease-out'))
     ]),
     trigger('btnChange2', [

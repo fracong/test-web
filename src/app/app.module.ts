@@ -14,6 +14,7 @@ import { ModeOneComponent } from './modal/mode-one/mode-one.component';
 import { TablePagingComponent } from './table-paging/table-paging.component';
 import { ModeTwoComponent } from './modal/mode-two/mode-two.component';
 import { TestPipePipe } from './pipe/test-pipe.pipe';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { TestPipePipe } from './pipe/test-pipe.pipe';
     HttpClientJsonpModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
